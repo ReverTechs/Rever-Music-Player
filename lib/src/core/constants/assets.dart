@@ -1,6 +1,6 @@
 class Links {
   static const String sourceCode =
-      'https://github.com/ShokhrukhbekYuldoshev/Meloplay';
+      'https://github.com/revertechs/rever-music-player';
 }
 
 class Assets {
