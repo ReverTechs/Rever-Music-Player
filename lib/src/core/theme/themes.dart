@@ -4,26 +4,26 @@ import 'package:rever/src/data/services/hive_box.dart';
 
 class Themes {
   static final List<ThemeColor> _themes = [
-    PurpleTheme(),
+    BlackTheme(),
     BlueTheme(),
     GreenTheme(),
     OrangeTheme(),
     YellowTheme(),
     TealTheme(),
     RedTheme(),
-    BlackTheme(),
+    PurpleTheme(),
     WhiteTheme(),
   ];
 
   static final List<String> _themeNames = [
-    'Purple',
+    'Black',
     'Blue',
     'Green',
     'Orange',
     'Yellow',
     'Teal',
     'Red',
-    'Black',
+    'Purple',
     'White',
   ];
 
@@ -32,7 +32,7 @@ class Themes {
 
   static ThemeColor getThemeFromKey(String key) {
     switch (key) {
-      case 'Purple':
+      case 'Black':
         return _themes[0];
       case 'Blue':
         return _themes[1];
@@ -46,7 +46,7 @@ class Themes {
         return _themes[5];
       case 'Red':
         return _themes[6];
-      case 'Black':
+      case 'Purple':
         return _themes[7];
       case 'White':
         return _themes[8];
@@ -63,13 +63,13 @@ class Themes {
   static String getThemeName() {
     final Box<dynamic> box = Hive.box(HiveBox.boxName);
     final String? themeName = box.get(HiveBox.themeKey) as String?;
-    return themeName ?? 'Purple';
+    return themeName ?? 'Black';
   }
 
   static ThemeColor getTheme() {
     final Box<dynamic> box = Hive.box(HiveBox.boxName);
     final String? themeName = box.get(HiveBox.themeKey) as String?;
-    return getThemeFromKey(themeName ?? 'Purple');
+    return getThemeFromKey(themeName ?? 'Black');
   }
 }
 

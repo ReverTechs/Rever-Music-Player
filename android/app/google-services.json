@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100548904367",
+    "project_id": "rever-music",
+    "storage_bucket": "rever-music.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100548904367:android:5dd4529509ea4d73a49b5a",
+        "android_client_info": {
+          "package_name": "com.example.rever"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6opOstB7Z_CVgTHKE6JhSD8h2srioScs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

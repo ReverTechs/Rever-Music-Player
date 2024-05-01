@@ -2,6 +2,10 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+   //changed new
+   // id 'com.google.gms.google-services' version '4.4.1' apply false
+   // id 'com.android.application'
+   // id 'com.google.gms.google-services'
 }
 
 def localProperties = new Properties()
@@ -27,14 +31,25 @@ android {
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+    // compileOptions {
+    //     sourceCompatibility JavaVersion.VERSION_1_8
+    //     targetCompatibility JavaVersion.VERSION_1_8
+       
+    // }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+    // kotlinOptions {
+    //     jvmTarget = '1.8'
+  
+    // }
+
+    compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+
+kotlinOptions {
+    jvmTarget = '17'
+}
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -65,4 +80,7 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:32.8.1')
+    implementation 'com.google.firebase:firebase-analytics'
+}

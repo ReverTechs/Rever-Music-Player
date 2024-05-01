@@ -1,6 +1,6 @@
 class Links {
   static const String sourceCode =
-      'https://github.com/ShokhrukhbekYuldoshev/Meloplay';
+      'https://github.com/revertechs/rever-music-player';
 }
 
 class Assets {
@@ -10,6 +10,8 @@ class Assets {
   // Images
   static const String earphones = 'assets/images/earphones.jpg';
   static const String developer = 'assets/images/music-rever.png';
+  static const String defualtArtwork = 'assets/images/noArwork11.jpg';
+
   //static const String heart = 'assets/images/heart.jpg';
   static const String heart = 'assets/icon/icon2.png';
 

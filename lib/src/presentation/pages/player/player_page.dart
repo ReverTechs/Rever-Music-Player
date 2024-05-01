@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
@@ -84,6 +86,10 @@ class _PlayerPageState extends State<PlayerPage> {
                     color: Colors.grey.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(0),
                   ),
+                  // child: Image.asset(
+                  //   Assets.defualtArtwork,
+                  //   fit: BoxFit.cover,
+                  // ),
                   child: const Icon(
                     Icons.music_note_outlined,
                     size: 100,
@@ -128,6 +134,9 @@ class _PlayerPageState extends State<PlayerPage> {
                                 color: Colors.grey.withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(50),
                               ),
+                              // child: Image.asset(Assets.defualtArtwork,
+                              //     scale:
+                              //         MediaQuery.of(context).size.height / 10),
                               child: Icon(
                                 Icons.music_note_outlined,
                                 size: MediaQuery.of(context).size.height / 10,
@@ -253,12 +262,11 @@ class _PlayerPageState extends State<PlayerPage> {
           icon: snapshot.data == false
               ? const Icon(
                   Icons.shuffle_outlined,
-                  color: Colors.grey,
+                  color: Colors.white, //grey
                 )
-              : const Icon(
-                  Icons.shuffle_outlined,
-                  color: Colors.white,
-                ),
+              : Icon(Icons.shuffle_outlined,
+                  // color: Colors.white,
+                  color: Colors.green[900]),
           iconSize: 30,
           tooltip: 'Shuffle',
         );
@@ -298,10 +306,9 @@ class _PlayerPageState extends State<PlayerPage> {
                   Icons.pause_outlined,
                   color: Colors.white,
                 )
-              : const Icon(
-                  Icons.play_arrow_outlined,
-                  color: Colors.white,
-                ),
+              : Icon(Icons.play_arrow_outlined,
+                  // color: Colors.white,
+                  color: Colors.green[900]),
           iconSize: 40,
           tooltip: 'Play/Pause',
         );
@@ -346,16 +353,16 @@ class _PlayerPageState extends State<PlayerPage> {
           icon: snapshot.data == LoopMode.off
               ? const Icon(
                   Icons.repeat_outlined,
-                  color: Colors.grey,
+                  color: Colors.white,
                 )
               : snapshot.data == LoopMode.all
-                  ? const Icon(
+                  ? Icon(
                       Icons.repeat_outlined,
-                      color: Colors.white,
+                      color: Colors.green[900], //white
                     )
                   : const Icon(
                       Icons.repeat_one_outlined,
-                      color: Colors.white,
+                      color: Colors.green, //white
                     ),
           iconSize: 30,
           tooltip: 'Repeat',

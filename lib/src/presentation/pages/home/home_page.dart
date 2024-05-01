@@ -58,6 +58,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       builder: (context, state) {
         return Scaffold(
           // current song, play/pause button, song progress bar, song queue button
+          //bottomNavigationBar: const PlayerBottomAppBar(),
+          //I used container, hence it was unnecessary currently
           bottomNavigationBar: const PlayerBottomAppBar(),
           extendBody: true,
           backgroundColor: Themes.getTheme().secondaryColor,
@@ -119,7 +121,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   AppBar _buildAppBar() {
     return AppBar(
       backgroundColor: Themes.getTheme().primaryColor,
-      title: const Text('Rever Music'),
+      title: Text('Ŕever Music',
+          style:
+              TextStyle(color: Colors.green[900], fontWeight: FontWeight.bold)),
       // search button
       actions: [
         IconButton(
@@ -127,7 +131,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             Navigator.of(context).pushNamed(AppRouter.searchRoute);
           },
           icon: const Icon(Icons.search_outlined),
-          tooltip: 'Search',
+          tooltip: 'Search music',
         )
       ],
     );
@@ -158,11 +162,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     const SizedBox(
                       height: 8,
                     ),
-                    const Text(
-                      'Rever Music',
+                    Text(
+                      'Ŕever Music',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
+                        color: Colors.green[900],
                       ),
                     ),
                   ],

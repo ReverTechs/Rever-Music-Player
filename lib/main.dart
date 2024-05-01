@@ -22,6 +22,10 @@ Future<void> main() async {
   // initialize flutter engine
   WidgetsFlutterBinding.ensureInitialized();
 
+  //firebase core
+  //WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+
   // initialize dependency injection
   init();
 

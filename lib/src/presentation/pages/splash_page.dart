@@ -39,7 +39,7 @@ class _SplashPageState extends State<SplashPage> {
               height: 200,
             ),
             const Text(
-              'Rever Music',
+              'Ŕever Music',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 48,

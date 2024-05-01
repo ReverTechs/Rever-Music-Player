@@ -181,7 +181,7 @@ class DeveloperOptions extends StatelessWidget {
                       vertical: 16.0,
                     ),
                     child: Text(
-                      'Developer Options | Version RM 21.03.0',
+                      'Developer Options | Version RM 23.11.0',
                       style: GoogleFonts.roboto(
                           color: const Color.fromARGB(255, 1, 18, 32),
                           fontSize: 11),
