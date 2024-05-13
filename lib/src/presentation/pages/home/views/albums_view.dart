@@ -90,20 +90,24 @@ class _AlbumsViewState extends State<AlbumsView>
                               ),
                             ),
                             const SizedBox(height: 8),
-                            Text(
-                              album.album,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
+                            Expanded(
+                              child: Text(
+                                album.album,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                            Text(
-                              album.artist ?? '',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(),
-                            ),
+                            Expanded(
+                              child: Text(
+                                album.artist ?? '',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(),
+                              ),
+                            )
                           ],
                         ),
                       ),

@@ -8,6 +8,7 @@ import 'package:rever/src/bloc/home/home_bloc.dart';
 import 'package:rever/src/bloc/player/player_bloc.dart';
 import 'package:rever/src/core/di/service_locator.dart';
 import 'package:rever/src/core/extensions/string_extensions.dart';
+import 'package:rever/src/core/theme/themes.dart';
 import 'package:rever/src/data/repositories/player_repository.dart';
 import 'package:rever/src/data/services/hive_box.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -71,16 +72,49 @@ class _SongsViewState extends State<SongsView>
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       // sort button
-                      IconButton(
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            builder: (context) => const SortBottomSheet(),
-                          );
-                        },
-                        icon: const Icon(Icons.sort),
-                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(top: 5, bottom: 5),
+                          child: Container(
+                              height: 30,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                  color: Themes.getTheme()
+                                      .secondaryColor
+                                      .withOpacity(
+                                          0.5), // Colors.grey.withOpacity(0.7),
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              child: Center(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                      context: context,
+                                      isScrollControlled: true,
+                                      builder: (context) =>
+                                          const SortBottomSheet(),
+                                    );
+                                  },
+                                  child: Text(
+                                    'Filters',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white.withOpacity(
+                                            0.8) // Color(0xD2F9F7F7),
+                                        ),
+                                  ),
+                                ),
+                              )))
+                      // IconButton(
+                      //   onPressed: () {
+                      //     showModalBottomSheet(
+                      //       context: context,
+                      //       isScrollControlled: true,
+                      //       builder: (context) => const SortBottomSheet(),
+                      //     );
+                      //   },
+
+                      //  icon: const Icon(Icons.sort),
+                      // ),
                     ],
                   ),
                 ),

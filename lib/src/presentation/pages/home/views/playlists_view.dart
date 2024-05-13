@@ -36,25 +36,29 @@ class _PlaylistsViewState extends State<PlaylistsView>
       const SizedBox(width: 16),
       _buildCard(
         image: Assets.heart,
-        label: 'Favorites',
+        label: 'Upgrade to Pro',
         icon: Icons.favorite_border_outlined,
-        color: Colors.red,
+        color: const Color.fromARGB(255, 1, 35, 3),
         onTap: () {
-          Navigator.of(context).pushNamed(
-            AppRouter.favoritesRoute,
-          );
+          // Navigator.of(context).pushNamed(
+          //   AppRouter.favoritesRoute,
+          // );
+          Fluttertoast.showToast(msg: 'Create ReverMusic account to use');
+          return;
         },
       ),
       const SizedBox(width: 16),
       _buildCard(
-        image: Assets.earphones,
-        label: 'Recents',
+        image: Assets.icon3,
+        label: 'Pro mode',
         icon: Icons.history_outlined,
-        color: const Color(0xFFF321D0),
+        color: const Color.fromARGB(255, 1, 32, 11),
         onTap: () {
-          Navigator.of(context).pushNamed(
-            AppRouter.recentsRoute,
-          );
+          // Navigator.of(context).pushNamed(
+          //   AppRouter.recentsRoute,
+          // );
+          Fluttertoast.showToast(msg: 'Create ReverMusic account to use');
+          return;
         },
       ),
       const SizedBox(width: 16),
@@ -124,7 +128,7 @@ class _PlaylistsViewState extends State<PlaylistsView>
                       leading: const Icon(Icons.music_note),
                       // title: Text(playlist.playlist),
                       title: const Text(
-                          "Feel missed, a dedication to all three souls & we love you M.C."),
+                          "continúa descansando en paz mi amada madre y hermana ❤"),
                       subtitle: Text(
                         '${playlist.numOfSongs} ${'song'.pluralize(playlist.numOfSongs)}',
                       ),
@@ -193,7 +197,8 @@ class _PlaylistsViewState extends State<PlaylistsView>
   ) {
     return AlertDialog(
       title: const Text('Delete playlist'),
-      content: Text('Are you sure you want to delete "${playlist.playlist}"?'),
+      content: const Text(
+          'Are you sure you want to delete " 馬內西·奇倫巴 "?'), //${playlist.playlist}
       actions: [
         TextButton(
           onPressed: () {

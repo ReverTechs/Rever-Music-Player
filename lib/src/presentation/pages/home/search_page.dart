@@ -30,7 +30,7 @@ class _SearchPageState extends State<SearchPage> {
           },
           controller: searchController,
           decoration: const InputDecoration(
-            hintText: 'Search',
+            hintText: 'Search query',
             border: InputBorder.none,
           ),
         ),

@@ -1,8 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
@@ -222,21 +220,24 @@ class _PlayerPageState extends State<PlayerPage> {
                     SeekBar(player: player),
                     const Spacer(),
                     // shuffle, previous, play/pause, next, repeat
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        //  shuffle button
-                        _buildShuffleButton(),
-                        // previous button
-                        _buildPreviousButton(context),
-                        // play/pause button
-                        _buildPlayPauseButton(),
-                        // next button
-                        _buildNextButton(context),
-                        // repeat button
-                        _buildRepeatButton(),
-                      ],
-                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          //  shuffle button
+                          _buildShuffleButton(),
+                          // previous button
+                          _buildPreviousButton(context),
+                          // play/pause button
+                          _buildPlayPauseButton(),
+                          // next button
+                          _buildNextButton(context),
+                          // repeat button
+                          _buildRepeatButton(),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -305,11 +306,15 @@ class _PlayerPageState extends State<PlayerPage> {
               ? const Icon(
                   Icons.pause_outlined,
                   color: Colors.white,
+                  size: 42,
                 )
-              : Icon(Icons.play_arrow_outlined,
+              // ignore: prefer_const_constructors
+              : Icon(
+                  Icons.play_circle_fill, //play_arrow_outlined,
                   // color: Colors.white,
-                  color: Colors.green[900]),
-          iconSize: 40,
+                  color: Colors.white,
+                ), //Colors.green[900]),
+          iconSize: 65, //40,
           tooltip: 'Play/Pause',
         );
       },

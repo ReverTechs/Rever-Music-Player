@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rever/Developer/developer.dart';
+import 'package:rever/developer/Advanced_settings.dart';
 import 'package:rever/src/bloc/theme/theme_bloc.dart';
+import 'package:rever/src/core/constants/assets.dart';
 import 'package:rever/src/core/router/app_router.dart';
 import 'package:rever/src/core/theme/themes.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final Uri _url = Uri.parse('https://t.me/+IUdMUMnAUA1jMGE0');
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -14,6 +20,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  //
   @override
   void initState() {
     super.initState();
@@ -35,6 +42,14 @@ class _SettingsPageState extends State<SettingsPage> {
     });
   }
 
+/////////
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+
+  ///
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
@@ -60,6 +75,76 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             child: ListView(
               children: [
+                //join my telegram group
+                const SizedBox(
+                  width: 10,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _launchUrl(); // Call the function using ()
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 100,
+                        margin: const EdgeInsets.only(
+                          top: 5,
+                          bottom: 5,
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(
+                          color: Colors.black26,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.asset(Assets.logo),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Text(
+                        "Ŕever Music",
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                //telegram link
+                // GestureDetector(
+                //   onTap: () {
+                //     _launchUrl;
+                //   },
+                //   child: Row(
+                //     children: [
+                //       Container(
+                //         width: 80, //128.0,
+                //         height: 100, // 128.0,
+                //         margin: const EdgeInsets.only(
+                //           top: 5, //24.0,
+                //           bottom: 5, //64.0,
+                //         ),
+                //         clipBehavior: Clip.antiAlias,
+                //         decoration: const BoxDecoration(
+                //           color: Colors.black26,
+                //           shape: BoxShape.circle,
+                //         ),
+                //         //child: Image.asset("assets/developer_image.png"),
+                //         child: Image.asset(Assets
+                //             .logo), // Assets.developer), // Change the image path accordingly
+                //       ),
+                //       const SizedBox(
+                //         width: 10,
+                //       ),
+                //       const Text("Ŕever Music",
+                //           style: TextStyle(
+                //               fontSize: 25, fontWeight: FontWeight.bold)),
+                //     ],
+                //   ),
+                // ),
                 // scan music (ignores songs which don't satisfy the requirements)
                 ListTile(
                   leading: const Icon(Icons.wifi_tethering_outlined),
@@ -73,11 +158,15 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 // language
                 // TODO: add language selection
-                // ListTile(
-                //   leading: const Icon(Icons.language_outlined),
-                //   title: const Text('Language'),
-                //   onTap: () async {},
-                // ),
+                ListTile(
+                  leading: const Icon(Icons.language_outlined),
+                  title: const Text('Language'),
+                  onTap: () async {
+                    Fluttertoast.showToast(
+                        msg: 'Create ReverMusic account to use');
+                    return;
+                  },
+                ),
                 // theme
                 ListTile(
                   leading: const Icon(Icons.color_lens_outlined),
@@ -97,6 +186,17 @@ class _SettingsPageState extends State<SettingsPage> {
                             builder: (context) => const DeveloperOptions()));
                   },
                 ),
+                ListTile(
+                  leading: const Icon(Icons.settings_accessibility_rounded),
+                  title: const Text('Advanced Settings'),
+                  onTap: () async {
+                    // Navigator.of(context).pushNamed(AppRouter.themesRoute);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AdvancedSettings()));
+                  },
+                ),
 
                 // package info
                 _buildPackageInfoTile(context),
@@ -108,6 +208,9 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
+////////url
+
+  ///
   ListTile _buildPackageInfoTile(BuildContext context) {
     return ListTile(
       leading: const Icon(Icons.info_outline),
@@ -120,7 +223,7 @@ class _SettingsPageState extends State<SettingsPage> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('Package info'),
+            title: const Text('App info'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +231,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 Text(
                   'Name: ${_packageInfo.appName}',
                 ),
-                const Text('Package: Null (revertechs.com*)'
+                const Text('Package: Null (revertechsoft.com)'
                     //'Package: ${_packageInfo.packageName}',
                     ),
                 Text(
